@@ -1,0 +1,135 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 EXPORT           Reset_Handler
+    2 00000000                 AREA             RESET, DATA, READONLY
+    3 00000000                 EXPORT           __Vectors
+    4 00000000         __Vectors
+    5 00000000 20020000        DCD              0x20020000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00         space            36
+    8 0000002C 00000000        DCD              dummy
+    9 00000030                 AREA             |.text|, CODE, READONLY
+   10 00000000                 ENTRY
+   11 00000000         Reset_Handler
+                               PROC
+   12 00000000         
+   13 00000000 F04F 0024       LDR              R0, =0x24
+   14 00000004 490C            LDR              R1, =0x20000100
+   15 00000006 6008            STR              R0, [R1]
+   16 00000008 F240 1223       MOV              R2, #0x123
+   17 0000000C F101 0315       ADD              R3, R1, #0x15
+   18 00000010 B403            push             {R0,R1}
+   19 00000012 F04F 0200       MOV              R2, #0
+   20 00000016 F04F 0300       MOV              R3, #0
+   21 0000001A BC0C            pop              {R2,R3}
+   22 0000001C 2A00            CMP              R2, #0
+   23 0000001E D002            BEQ              op1
+   24 00000020 F240 1411       MOV              R4, #0x111
+   25 00000024 E000            B                op2
+   26 00000026         op1
+   27 00000026 461C            MOV              R4, R3
+   28 00000028         op2
+   29 00000028 DF00            svc              0
+   30 0000002A F241 2534       MOV              R5, #0x1234
+   31 0000002E F246 7689       MOV              R6, #0x6789
+   32 00000032 E7FE            B                .
+   33 00000034                 ENDP
+   34 00000034         dummy   PROC
+   35 00000034 4770            BX               LR
+   36 00000036                 ENDP
+   37 00000036 BF00            NOP
+   38 00000038                 END
+              20000100 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
+interwork --depend=..\obj\startup.d -o..\obj\startup.o -IC:\Users\小霸王\AppDat
+a\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\In
+clude --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 536" --pr
+edefine="STM32L476xx SETA 1" --list=.\listings\startup.lst C:\Users\小霸王\Desk
+top\startup.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 2 in file C:\Users\
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file C:\Users\
+   Uses
+      At line 3 in file C:\Users\
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 9 in file C:\Users\
+   Uses
+      None
+Comment: .text unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file C:\Users\
+   Uses
+      At line 1 in file C:\Users\
+      At line 6 in file C:\Users\
+
+dummy 00000034
+
+Symbol: dummy
+   Definitions
+      At line 34 in file C:\Users\
+   Uses
+      At line 8 in file C:\Users\
+Comment: dummy used once
+op1 00000026
+
+Symbol: op1
+   Definitions
+      At line 26 in file C:\Users\
+   Uses
+      At line 23 in file C:\Users\
+Comment: op1 used once
+op2 00000028
+
+Symbol: op2
+   Definitions
+      At line 28 in file C:\Users\
+   Uses
+      At line 25 in file C:\Users\
+Comment: op2 used once
+5 symbols
+343 symbols in table

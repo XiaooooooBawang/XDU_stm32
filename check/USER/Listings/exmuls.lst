@@ -1,0 +1,102 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 00000000        DCD              Reset_Handler
+    5 00000004         
+    6 00000004                 AREA             |.text|, CODE, READONLY
+    7 00000000                 ENTRY
+    8 00000000         Reset_Handler
+                               PROC
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         ;add your code here
+   11 00000000 F04F 0318       mov              r3,#0x18
+   12 00000004 6818            ldr              r0,[r3,#0]
+   13 00000006 6859            ldr              r1,[r3,#4]
+   14 00000008 4408            add              r0,r1
+   15 0000000A F04F 5300       mov              r3,#0x20000000
+   16 0000000E 6018            str              r0,[r3]
+   17 00000010 E7FE            b                .
+   18 00000012 BF00            NOP
+   19 00000014         
+   20 00000014                 endp
+   21 00000014 00000007 
+                       a       DCD              7
+   22 00000018 0000000A 
+                       c       DCD              10
+   23 0000001C BF00            NOP
+   24 0000001E                 end
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
+interwork --depend=..\obj\exmuls.d -o..\obj\exmuls.o -IC:\Users\–°∞‘Õı\AppData\
+Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Incl
+ude --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 536" --pred
+efine="STM32L476xx SETA 1" --list=.\listings\exmuls.lst ..\CORE\ExMuls.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file ..\CORE\ExMuls.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file ..\CORE\ExMuls.s
+   Uses
+      At line 2 in file ..\CORE\ExMuls.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 6 in file ..\CORE\ExMuls.s
+   Uses
+      None
+Comment: .text unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 8 in file ..\CORE\ExMuls.s
+   Uses
+      At line 4 in file ..\CORE\ExMuls.s
+      At line 9 in file ..\CORE\ExMuls.s
+
+a 00000014
+
+Symbol: a
+   Definitions
+      At line 21 in file ..\CORE\ExMuls.s
+   Uses
+      None
+Comment: a unused
+c 00000018
+
+Symbol: c
+   Definitions
+      At line 22 in file ..\CORE\ExMuls.s
+   Uses
+      None
+Comment: c unused
+4 symbols
+340 symbols in table
