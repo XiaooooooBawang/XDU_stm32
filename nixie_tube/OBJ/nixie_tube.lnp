@@ -1,0 +1,8 @@
+--cpu=Cortex-M4.fp.sp
+"..\obj\nixie_tube.o"
+"..\obj\startup_stm32f411xe.o"
+"..\obj\system_stm32f4xx.o"
+--strict --scatter "..\OBJ\nixie_tube.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\nixie_tube.map" -o ..\OBJ\nixie_tube.axf
